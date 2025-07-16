@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
     const navLinks = <>
         <NavLink to='/'>Home</NavLink>
-        <NavLink to='/'>Menu</NavLink>
-        <NavLink to='/'>Contract</NavLink>
+        <NavLink to='/menu'>Menu</NavLink>
+        <NavLink to='/order/salad'>Order</NavLink>
     </>
     return (
         <div className="bg-[#1919196b] fixed z-10 w-full  text-white">
