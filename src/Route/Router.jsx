@@ -8,6 +8,8 @@ import SignIn from "../Pages/Forms/SignIn";
 import SignUp from "../Pages/Forms/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import TestPrivate from "../Pages/Shared/TestPrivate/TestPrivate";
+import Dashboard from "../Layouts/Dashboard";
+import Cart from "../Pages/Dashboard/Cart/Cart";
 
 const myRouter = createBrowserRouter([
   {
@@ -41,6 +43,16 @@ const myRouter = createBrowserRouter([
         },
     ]
   },
+  {
+    path : 'dashboard',
+    element : <Dashboard></Dashboard>,
+    children : [
+        {
+            path : 'cart',
+            element : <Cart></Cart>
+        }
+    ]
+  }
 ]);
 
 export default myRouter;
