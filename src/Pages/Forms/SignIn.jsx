@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Provider/AuthProvider';
+import SocialShare from './SocialShare';
 
 const SignIn = () => {
     const [disabled , setDisabled] = useState(true)
@@ -63,6 +64,7 @@ const SignIn = () => {
                        <input disabled={disabled} type="submit" className="btn btn-neutral mt-4" value="Login" />
                        <span className=' text-red-400'> <Link to='/signUp'>Sign Up</Link></span>
                 </form>
+                <SocialShare></SocialShare>
                 </div>
             </div>
             </div>

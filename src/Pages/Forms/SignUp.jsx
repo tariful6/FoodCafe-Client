@@ -2,8 +2,11 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form"
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialShare from "./SocialShare";
 
 const SignUp = () => {
+      const axiosPublic = useAxiosPublic();
       const { register,handleSubmit, watch, formState: { errors }} = useForm()
         const {createUser, updateUserProfile} = useContext(AuthContext)
         const navigate = useNavigate()
@@ -13,10 +16,18 @@ const SignUp = () => {
             createUser(data.email, data.password)
             .then(() =>{
                 updateUserProfile(data.name, data.photo)
-                .then(data => {
-                    console.log(data);
+                    // send user data to server ---------
+                    const userInfo = { 
+                        name : data.name,
+                        email : data.email
+                    }
+                    axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                       if(res.data.insertedId){
+                        alert('user added in server')
+                       }
+                    })
                     navigate('/')
-                })
             })
             .catch (err => console.log(err))
         }
@@ -60,6 +71,7 @@ const SignUp = () => {
                        <input  type="submit" className="btn btn-neutral mt-4" value="Sign Up" />
                        <span className=' text-red-400'> <Link to='/signIn'>Sign in</Link></span>
                 </form>
+                <SocialShare></SocialShare>
                 </div>
             </div>
             </div>
