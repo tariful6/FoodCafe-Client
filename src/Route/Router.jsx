@@ -7,10 +7,13 @@ import Order from "../Pages/Order/Order";
 import SignIn from "../Pages/Forms/SignIn";
 import SignUp from "../Pages/Forms/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import TestPrivate from "../Pages/Shared/TestPrivate/TestPrivate";
 import Dashboard from "../Layouts/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AddItems from "../Pages/Dashboard/AddItems/AddItems";
+import AdminRoute from "./AdminRoute";
+import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
 
 const myRouter = createBrowserRouter([
   {
@@ -38,10 +41,6 @@ const myRouter = createBrowserRouter([
             path : 'signUp',
             element : <SignUp></SignUp>
         },
-        {
-            path : 'secret',
-            element : <PrivateRoute> <TestPrivate></TestPrivate></PrivateRoute>
-        },
     ]
   },
   {
@@ -55,7 +54,20 @@ const myRouter = createBrowserRouter([
         // admin route
         {
             path : 'users',
-            element : <AllUsers></AllUsers>
+            element : <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        },
+        {
+            path : 'addItems',
+            element : <AdminRoute> <AddItems></AddItems></AdminRoute>
+        },
+        {
+            path : 'manageItems',
+            element : <AdminRoute> <ManageItems></ManageItems></AdminRoute>
+        },
+        {
+            path : 'updateItem/:id',
+            element : <AdminRoute> <UpdateItem></UpdateItem></AdminRoute>,
+           loader :({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         },
     ]
   }
