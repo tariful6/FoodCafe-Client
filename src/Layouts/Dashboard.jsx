@@ -45,7 +45,7 @@ const Dashboard = () => {
                      </li>
                      <li className=" flex gap-3 items-center ">
                         <FaCalendar></FaCalendar>
-                        <NavLink to='/dashboard/reservation'>Reservation</NavLink>
+                        <NavLink to='/dashboard/history'>Payment History</NavLink>
                      </li>
                      <li className=" flex gap-3 items-center ">
                         <FaShoppingCart></FaShoppingCart>
@@ -57,7 +57,7 @@ const Dashboard = () => {
                      </li>
                      <li className=" flex gap-3 items-center ">
                         <FaList></FaList>
-                        <NavLink to='/dashboard/bookings'>My Bookings</NavLink>
+                        <NavLink to='/dashboard/paymentHistory'>Payment Real History</NavLink>
                      </li>
                   </>
                }
