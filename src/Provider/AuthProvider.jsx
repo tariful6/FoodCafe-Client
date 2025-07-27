@@ -51,17 +51,18 @@ const AuthProvider = ({children}) => {
                 axiosPublic.post('/jwt' , userInfo)
                 .then(res => {
                     localStorage.setItem('access-token', res.data.token)
+                     setLoading(false);
 
                 })
             }else{
                  localStorage.removeItem('access-token')
             }
-            setLoading(false);
+           
         })
         return () => {
             return unSubscribe();
         }
-    },[])
+    },[axiosPublic])
 
 
     const authInfo = { user, loading, createUser, signInUser, logOut, updateUserProfile, signInGoogle }
